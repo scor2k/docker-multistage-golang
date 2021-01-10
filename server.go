@@ -5,6 +5,9 @@ import (
 	"net/http"
 )
 
+var appVersion = "0.1.0"
+var appName = "docker-multistage-golang"
+
 type healthCheck struct {
 	Application string
 	Version     string
@@ -12,7 +15,7 @@ type healthCheck struct {
 }
 
 func healthCheckHTTP(w http.ResponseWriter, req *http.Request) {
-	res := healthCheck{"docker-multistage-golang", "0.1.0", true}
+	res := healthCheck{appName, appVersion, true}
 
 	jres, err := json.Marshal(res)
 	if err != nil {
